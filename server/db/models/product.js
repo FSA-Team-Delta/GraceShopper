@@ -2,13 +2,17 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Product = db.define('product', {
+  id: {
+    type: Sequelize.STRING,
+    primaryKey: true
+  },
   name: {
     type: Sequelize.STRING,
     allowNull: false
   },
-  type: {
-    type: Sequelize.STRING,
-    allowNull: false
+  types: {
+    type: Sequelize.ARRAY(Sequelize.STRING),
+    allowNull: true
   },
   rarity: {
     type: Sequelize.STRING,
@@ -17,7 +21,8 @@ const Product = db.define('product', {
   },
   price: {
     type: Sequelize.DECIMAL,
-    allowNull: false
+    allowNull: false,
+    defaultValue: 0
   },
   inventory: {
     type: Sequelize.INTEGER,
