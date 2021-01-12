@@ -1,18 +1,22 @@
 'use strict'
 
+const axios = require('axios')
 const db = require('../server/db')
-const {User} = require('../server/db/models')
+const {User, Checkout, Product, Cart, Order} = require('../server/db/models')
+// const pokemon = require('../pokemons')
 
 async function seed() {
   await db.sync({force: true})
+  const {data: {cards}} = await axios.get('https://api.pokemontcg.io/v1/cards')
+  console.log('$$$$$$$$$$', cards)
+  await Promise.all(
+    cards.map(pokemon => {
+      return Product.create(pokemon)
+    })
+  )
+
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123'}),
-    User.create({email: 'murphy@email.com', password: '123'})
-  ])
-
-  console.log(`seeded ${users.length} users`)
   console.log(`seeded successfully`)
 }
 
