@@ -10,6 +10,35 @@ const Product = db.define('product', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  imageUrlHiRes: {
+    type: Sequelize.TEXT,
+    validate: {
+      isUrl: true
+    },
+    allowNull: false
+  },
+  imageUrl: {
+    type: Sequelize.TEXT,
+    validate: {
+      isUrl: true
+    },
+    allowNull: false
+  },
+  hp: {
+    type: Sequelize.STRING
+  },
+  resistances: {
+    type: Sequelize.JSON
+  },
+  weaknesses: {
+    type: Sequelize.ARRAY(Sequelize.JSON)
+  },
+  convertedRetreatCost: {
+    type: Sequelize.INTEGER
+  },
+  atttacks: {
+    type: Sequelize.ARRAY(Sequelize.JSON)
+  },
   types: {
     type: Sequelize.ARRAY(Sequelize.STRING),
     allowNull: true
@@ -29,5 +58,7 @@ const Product = db.define('product', {
     defaultValue: 0
   }
 })
+
+//hp, resistance, weakness, retreate cost, attacks, image, name
 
 module.exports = Product
