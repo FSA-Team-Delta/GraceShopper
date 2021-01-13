@@ -1,6 +1,24 @@
-import React from 'react'
-// import {Connect} from 'react-redux'
+import React from 'react';
+import {connect} from 'react-redux';
+import {getPokemon} from '../store/singlePoke';
 
-export default function SingleProduct() {
-  return <div>testing 123</div>
+class SinglePokemon extends React.Component {
+  componentDidMount() {
+    console.log(this.props);
+    // this.props.singlePokemon(this.props)
+  }
+
+  render() {
+    return <div>yep</div>;
+  }
 }
+
+const mapStateToProps = (state) => ({
+  pokemon: state.singlePokemon,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  singlePokemon: (id) => dispatch(getPokemon(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SinglePokemon);
