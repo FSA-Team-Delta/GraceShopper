@@ -6,8 +6,8 @@ import SingleProduct from './SingleProduct';
 const App = () => {
   return (
     <div>
-      {/* <Navbar />
-      <Routes /> */}
+      {/* <Navbar /> */}
+      <Routes />
       <SingleProduct />
     </div>
   );

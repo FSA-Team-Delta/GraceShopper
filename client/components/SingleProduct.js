@@ -5,20 +5,20 @@ import {fetchPokemon} from '../store/singlePoke';
 class SinglePokemon extends React.Component {
   componentDidMount() {
     try {
-      const id = this.props.match.params.id;
+      this.props.singlePokemon('xy7-10');
+      console.log(this.props);
     } catch (error) {
       console.error(error);
     }
   }
 
   render() {
-    console.log(this.props);
     return <div>yep</div>;
   }
 }
 
 const mapStateToProps = state => ({
-  pokemon: state.singlePokemon
+  state
 });
 
 const mapDispatchToProps = dispatch => ({
