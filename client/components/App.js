@@ -1,7 +1,7 @@
-import React from 'react'
-import {Navbar} from '.'
-import Routes from './Routes'
-import SingleProduct from './SingleProduct'
+import React from 'react';
+import {Navbar} from '.';
+import Routes from './Routes';
+import SingleProduct from './SingleProduct';
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
       <Routes /> */}
       <SingleProduct />
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;

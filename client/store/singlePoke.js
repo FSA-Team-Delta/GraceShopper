@@ -4,14 +4,14 @@ import axios from 'axios';
 export const SINGLE_POKEMON = 'SINGLE_POKEMON';
 
 //action creator
-export const _singlePokemon = (pokemon) => ({
+export const _singlePokemon = pokemon => ({
   type: SINGLE_POKEMON,
-  pokemon,
+  pokemon
 });
 
 //thunk
-export const getPokemon = (id) => {
-  return async (dispatch) => {
+export const fetchPokemon = id => {
+  return async dispatch => {
     try {
       const {data: pokemon} = await axios.get(`/api/product/${id}`);
       dispatch(_singlePokemon(pokemon));
@@ -23,15 +23,14 @@ export const getPokemon = (id) => {
 
 //reducer
 const initialState = {
-  pokemon: {},
+  pokemon: {}
 };
 
-export default (state = initialState, action) => {
+export default function pokemonReducer(state = initialState, action) {
   switch (action.type) {
     case SINGLE_POKEMON:
       return {...state, pokemon: action.pokemon};
-    //return action.pokemon
     default:
       return state;
   }
-};
+}
