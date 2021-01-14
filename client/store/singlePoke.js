@@ -13,23 +13,19 @@ export const _singlePokemon = pokemon => ({
 export const fetchPokemon = id => {
   return async dispatch => {
     try {
-      const {data: pokemon} = await axios.get(`/api/product/${id}`);
-      dispatch(_singlePokemon(pokemon));
+      const {data} = await axios.get(`/api/product/${id}`);
+      dispatch(_singlePokemon(data));
+      console.log('inside thunk', data);
     } catch (error) {
       console.error(error);
     }
   };
 };
 
-//reducer
-const initialState = {
-  pokemon: {}
-};
-
-export default function pokemonReducer(state = initialState, action) {
+export default function pokemonReducer(state = {}, action) {
   switch (action.type) {
     case SINGLE_POKEMON:
-      return {...state, pokemon: action.pokemon};
+      return action.pokemon;
     default:
       return state;
   }

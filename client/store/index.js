@@ -10,7 +10,7 @@ import singlePokemon from './singlePoke';
 const reducer = combineReducers({
   user: userReducer,
   products: productsReducer,
-  singlePokemon: singlePokemon
+  pokemon: singlePokemon
 });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

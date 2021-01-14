@@ -1,25 +1,30 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {fetchPokemon} from '../store/singlePoke';
+import {withRouter} from 'react-router';
 
 class SinglePokemon extends React.Component {
   componentDidMount() {
-    try {
-      this.props.singlePokemon('xy7-10');
-      console.log(this.props);
-    } catch (error) {
-      console.error(error);
-    }
+    this.props.singlePokemon(this.props.match.params.id);
+    console.log('inside mount');
   }
 
   render() {
-    return <div>yep</div>;
+    const image = this.props.pokemon.imageUrl || '';
+    const hp = this.props.pokemon.hp;
+    return (
+      <div>
+        <img src={image} />
+        <h2>Hp:{hp}</h2>
+      </div>
+    );
   }
 }
 
-const mapStateToProps = state => ({
-  state
-});
+const mapStateToProps = state => {
+  console.log('map state', state);
+  return {pokemon: state.pokemon};
+};
 
 const mapDispatchToProps = dispatch => ({
   singlePokemon: id => dispatch(fetchPokemon(id))
