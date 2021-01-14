@@ -5,13 +5,14 @@ import {fetchProducts} from '../store/products'
 
 //test for brandon
 
-export class AllProducts extends React.Component {
+class AllProducts extends React.Component {
   componentDidMount() {
     this.props.getProducts()
   }
   render() {
+    console.log(this.props)
     return (
-      <div id="products">
+      <h1 id="products">
         <h1>All Pokemon Cards For Sale</h1>
         {this.props.products.map(product => {
           return (
@@ -26,7 +27,7 @@ export class AllProducts extends React.Component {
             </div>
           )
         })}
-      </div>
+      </h1>
     )
   }
 }

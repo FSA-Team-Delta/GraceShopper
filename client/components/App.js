@@ -10,7 +10,7 @@ const App = () => {
       <Navbar />
       <Routes />
       <SingleProduct />
-      <AllProducts />
+      {/* <AllProducts /> */}
     </div>
   )
 }
