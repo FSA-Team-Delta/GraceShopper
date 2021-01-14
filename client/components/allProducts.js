@@ -1,36 +1,34 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-dom';
+import {fetchProducts} from '../store/products';
 
-export class AllProducts extends React.Component {
-  constructor() {
-    super();
-  }
+//test for brandon
+
+class AllProducts extends React.Component {
   componentDidMount() {
     this.props.getProducts();
   }
   render() {
-    //   <div id="products">
-    //   {this.props.products.map((product) => {
-    //     return (
-    //       <div key={product.id} className="backDiv">
-    //         <Link to={`/products/${product.id}`}>
-    //           <div className="productName">
-    //             <h1 className="productName">{product.name}</h1>
-    //             <h3 className="productName">
-    //               Fuel Level:{product.fuelLevel}
-    //               <div /> Fuel Type: {product.fuelType}
-    //             </h3>
-    //             <img src={product.imageUrl} />
-    //           </div>
-    //         </Link>
-    //
-    //           <img src="https://image.winudf.com/v2/image1/Y29tLnNlbGZkZXN0cnVjdGlvbl9pY29uXzE1NjcwMzkwMjBfMDY1/icon.png?w=170&fakeurl=1" />
-    //         </button>
-    //       </div>
-    //     );
-    //   })}
-    // </div>
+    console.log(this.props);
+    return (
+      <h1 id="products">
+        <h1>All Pokemon Cards For Sale</h1>
+        {this.props.products.map(product => {
+          return (
+            <div key={product.id}>
+              <h1 className="productName">{product.name}</h1>
+              <img src={product.imageUrl} />
+              <h3 className="productName">Rarity: {product.rarity}</h3>
+
+              <h3 className="productName">
+                <p>This card is available for only:</p> ${product.price}
+              </h3>
+            </div>
+          );
+        })}
+      </h1>
+    );
   }
 }
 
