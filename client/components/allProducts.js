@@ -1,16 +1,16 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Link} from 'react-dom'
-import {fetchProducts} from '../store/products'
+import React from 'react';
+import {connect} from 'react-redux';
+import {Link} from 'react-dom';
+import {fetchProducts} from '../store/products';
 
 //test for brandon
 
 class AllProducts extends React.Component {
   componentDidMount() {
-    this.props.getProducts()
+    this.props.getProducts();
   }
   render() {
-    console.log(this.props)
+    console.log(this.props);
     return (
       <h1 id="products">
         <h1>All Pokemon Cards For Sale</h1>
@@ -25,23 +25,23 @@ class AllProducts extends React.Component {
                 <p>This card is available for only:</p> ${product.price}
               </h3>
             </div>
-          )
+          );
         })}
       </h1>
-    )
+    );
   }
 }
 
 const mapState = state => {
   return {
     products: state.products
-  }
-}
+  };
+};
 
 const mapDispatch = dispatch => {
   return {
     getProducts: () => dispatch(fetchProducts())
-  }
-}
+  };
+};
 
-export default connect(mapState, mapDispatch)(AllProducts)
+export default connect(mapState, mapDispatch)(AllProducts);
