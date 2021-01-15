@@ -1,6 +1,6 @@
-const crypto = require('crypto')
-const Sequelize = require('sequelize')
-const db = require('../db')
+const crypto = require('crypto');
+const Sequelize = require('sequelize');
+const db = require('../db');
 
 const User = db.define('user', {
   name: {
@@ -19,23 +19,20 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  contact: {
+  phone: {
     type: Sequelize.INTEGER,
     isNumeric: true
   },
   address: {
     type: Sequelize.STRING
   },
-  orderHistory: {
-    type: Sequelize.ARRAY(Sequelize.STRING)
-  },
-  admin: {
+  isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
   }
-})
+});
 
-module.exports = User
+module.exports = User;
 
 /**
  * instanceMethods

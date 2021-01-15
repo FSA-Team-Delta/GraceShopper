@@ -1,5 +1,5 @@
-const Sequelize = require('sequelize')
-const db = require('../db')
+const Sequelize = require('sequelize');
+const db = require('../db');
 
 const Product = db.define('product', {
   id: {
@@ -57,8 +57,8 @@ const Product = db.define('product', {
     type: Sequelize.INTEGER,
     defaultValue: 0
   }
-})
+});
 
 //hp, resistance, weakness, retreate cost, attacks, image, name
 
-module.exports = Product
+module.exports = Product;
