@@ -2,9 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-dom'
 import {fetchProducts} from '../store/products'
-
-//test for brandon
-
 class AllProducts extends React.Component {
   componentDidMount() {
     this.props.getProducts()
