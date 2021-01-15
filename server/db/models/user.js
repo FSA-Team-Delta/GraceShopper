@@ -9,7 +9,9 @@ const User = db.define('user', {
   },
   email: {
     type: Sequelize.STRING,
-    isEmail: true
+    isEmail: true,
+    allowNull: false,
+    unique: true
   },
   password: {
     type: Sequelize.STRING,
@@ -17,14 +19,17 @@ const User = db.define('user', {
   },
   username: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    unique: true
   },
   phone: {
     type: Sequelize.INTEGER,
-    isNumeric: true
+    isNumeric: true,
+    allowNull: false
   },
   address: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    allowNull: false
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
