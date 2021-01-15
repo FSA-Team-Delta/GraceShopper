@@ -1,24 +1,26 @@
-const router = require('express').Router()
-const Product = require('../db/models/product')
+const router = require('express').Router();
+const Product = require('../db/models/product');
 
 router.get('/', async (req, res, next) => {
   try {
-    const item = await Product.findAll()
+    const item = await Product.findAll();
 
-    res.send(item)
+    res.send(item);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
 router.get('/:id', async (req, res, next) => {
   try {
-    const item = await Product.findByPk(req.params.id)
+    const item = await Product.findByPk(req.params.id);
 
-    res.send(item)
+    console.log('backend hit');
+
+    res.send(item);
   } catch (error) {
-    next(error)
+    next(error);
   }
-})
+});
 
-module.exports = router
+module.exports = router;
