@@ -2,16 +2,21 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const Order = db.define('order', {
+  completed: {
+    type: Sequelize.BOOLEAN,
+    allowNull: false,
+    defaultValue: false
+  },
   dateOfPurchase: {
     type: Sequelize.DATE,
     allowNull: false
   },
-  numberOfItems: {
-    type: Sequelize.DECIMAL,
+  quantity: {
+    type: Sequelize.INTEGER,
     allowNull: false
   },
-  total: {
-    type: Sequelize.DECIMAL,
+  totalPriceOfOrder: {
+    type: Sequelize.INTEGER,
     allowNull: false
   }
 })
