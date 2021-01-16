@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-dom';
 import {fetchProducts} from '../store/products';
+import '../css-components/AllProducts.css';
 
 class AllProducts extends React.Component {
   componentDidMount() {
@@ -10,8 +11,8 @@ class AllProducts extends React.Component {
   render() {
     return (
       <div>
-        <h1 id="products">
-          <h1 className="allProducts__header">Pokemon Cards For Sale</h1>
+        <h1 className="allProducts__header">Pokemon Cards For Sale</h1>
+        <div className="allProducts__item">
           {this.props.products.map(product => {
             return (
               <div key={product.id} className="allProducts__eachCard">
@@ -21,7 +22,7 @@ class AllProducts extends React.Component {
               </div>
             );
           })}
-        </h1>
+        </div>
       </div>
     );
   }
