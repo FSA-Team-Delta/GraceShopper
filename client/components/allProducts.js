@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-dom';
 import {fetchProducts} from '../store/products';
 import '../css-components/AllProducts.css';
+import {Button} from '@material-ui/core';
 
 class AllProducts extends React.Component {
   componentDidMount() {
@@ -17,8 +18,12 @@ class AllProducts extends React.Component {
             return (
               <div key={product.id} className="allProducts__eachCard">
                 <img src={product.imageUrl} />
-                <h1>{product.name}</h1>
-                <h3>Price: ${product.price}</h3>
+                <div className="allProducts__buy">
+                  <Button variant="contained" color="primary" size="small">
+                    BUY
+                  </Button>
+                  <h3>Price: ${product.price}</h3>
+                </div>
               </div>
             );
           })}
