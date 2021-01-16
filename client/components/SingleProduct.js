@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fetchPokemon} from '../store/singlePokemon';
 import '../css-components/SingleProduct.css';
+import {Button} from '@material-ui/core';
 
 class SinglePokemon extends React.Component {
   componentDidMount() {
@@ -33,6 +34,12 @@ class SinglePokemon extends React.Component {
           {/* <h2>convertedRetreatCost: {convertedRetreatCost}</h2> */}
           <div>
             <h2>Weaknesses: {weaknesses.length && weaknesses[0].type}</h2>
+            <div className="singleProduct__buy">
+              <Button variant="contained" color="primary" size="small">
+                BUY
+              </Button>
+              <input type="number" />
+            </div>
           </div>
         </div>
       </div>
