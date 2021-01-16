@@ -11,13 +11,9 @@ const Order = db.define('order', {
     type: Sequelize.DATE,
     allowNull: false
   },
-  quantity: {
-    type: Sequelize.INTEGER,
-    allowNull: false
-  },
-  totalPriceOfOrder: {
-    type: Sequelize.INTEGER,
-    allowNull: false
+  shippingOption: {
+    type: Sequelize.STRING,
+    defaultValue: '2 Week Ground Shipping'
   }
 });
 

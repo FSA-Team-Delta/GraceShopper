@@ -5,6 +5,10 @@ const Product_Order = db.define('Product_Order', {
   priceHistory: {
     type: Sequelize.INTEGER,
     allowNull: false
+  },
+  quantity: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   }
 });
 

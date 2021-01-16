@@ -1,21 +1,40 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchPokemon} from '../store/singlePoke';
-import {withRouter} from 'react-router';
+import {fetchPokemon} from '../store/singlePokemon';
+import '../css-components/SingleProduct.css';
 
 class SinglePokemon extends React.Component {
   componentDidMount() {
     this.props.singlePokemon(this.props.match.params.id);
-    console.log('inside mount');
+    console.log('inside component');
   }
-
   render() {
     const image = this.props.pokemon.imageUrl || '';
-    const hp = this.props.pokemon.hp;
+    const weaknesses = this.props.pokemon.weaknesses || '';
+    const {
+      name,
+      hp,
+      types,
+      rarity,
+      price,
+      inventory
+      // convertedRetreatCost,
+    } = this.props.pokemon;
+    console.log('inside render');
     return (
-      <div>
+      <div className="singleProduct_setting">
         <img src={image} />
-        <h2>Hp:{hp}</h2>
+        <div className="singleProduct-description">
+          <h2>Hp: {hp}</h2>
+          <h2>Type: {types}</h2>
+          <h2>Rarity: {rarity}</h2>
+          <h2>Price: {price}</h2>
+          <h2>Qty: {inventory}</h2>
+          {/* <h2>convertedRetreatCost: {convertedRetreatCost}</h2> */}
+          <div>
+            <h2>Weaknesses: {weaknesses.length && weaknesses[0].type}</h2>
+          </div>
+        </div>
       </div>
     );
   }

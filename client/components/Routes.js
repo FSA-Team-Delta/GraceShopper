@@ -4,7 +4,7 @@ import {withRouter, Route, Switch} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {Login, Signup, UserHome} from '.';
 import {me} from '../store';
-import AllProducts from './allProducts';
+import AllProducts from './AllProducts';
 import SinglePokemon from './SingleProduct';
 
 /**
@@ -23,7 +23,7 @@ class Routes extends Component {
         {/* Routes placed here are available to all visitors */}
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route exact path="/allproducts" component={AllProducts} />
+        <Route exact path="/product" component={AllProducts} />
         <Route exact path="/product/:id" component={SinglePokemon} />
 
         {isLoggedIn && (
