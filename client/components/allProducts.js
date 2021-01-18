@@ -16,7 +16,7 @@ class AllProducts extends React.Component {
         <div className="allProducts__item">
           {this.props.products.map(product => {
             return (
-              <div key={product.id} className="allProducts__eachCard">
+              <div key={product.id} className="allProducts__card">
                 <img src={product.imageUrl} />
                 <div className="allProducts__buy">
                   <Button variant="contained" color="primary" size="small">
