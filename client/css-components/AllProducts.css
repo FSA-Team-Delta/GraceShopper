@@ -1,0 +1,18 @@
+.allProducts__header {
+  color: red;
+}
+
+.allProducts__item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+
+  /* transition-timing-function: ease-in;
+  transition: all 0.5s; */
+}
+
+.allProducts__buy {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}

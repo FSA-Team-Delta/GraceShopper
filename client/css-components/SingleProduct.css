@@ -1,0 +1,12 @@
+.singleProduct_setting {
+  display: flex;
+}
+
+.singleProduct-description {
+  margin-left: 10px;
+}
+
+.singleProduct__buy {
+  display: flex;
+  justify-content: space-between;
+}

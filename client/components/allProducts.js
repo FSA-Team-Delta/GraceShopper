@@ -2,32 +2,33 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-dom';
 import {fetchProducts} from '../store/products';
-
-//test for brandon
+import '../css-components/AllProducts.css';
+import {Button} from '@material-ui/core';
 
 class AllProducts extends React.Component {
   componentDidMount() {
     this.props.getProducts();
   }
   render() {
-    console.log(this.props);
     return (
-      <h1 id="products">
-        <h1>All Pokemon Cards For Sale</h1>
-        {this.props.products.map(product => {
-          return (
-            <div key={product.id}>
-              <h1 className="productName">{product.name}</h1>
-              <img src={product.imageUrl} />
-              <h3 className="productName">Rarity: {product.rarity}</h3>
-
-              <h3 className="productName">
-                <p>This card is available for only:</p> ${product.price}
-              </h3>
-            </div>
-          );
-        })}
-      </h1>
+      <div>
+        <h1 className="allProducts__header">Pokemon Cards For Sale</h1>
+        <div className="allProducts__item">
+          {this.props.products.map(product => {
+            return (
+              <div key={product.id} className="allProducts__eachCard">
+                <img src={product.imageUrl} />
+                <div className="allProducts__buy">
+                  <Button variant="contained" color="primary" size="small">
+                    BUY
+                  </Button>
+                  <h3>Price: ${product.price}</h3>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     );
   }
 }

@@ -5,7 +5,7 @@ import {composeWithDevTools} from 'redux-devtools-extension';
 import user from './user';
 import userReducer from './user';
 import productsReducer from './products';
-import singlePokemon from './singlePoke';
+import singlePokemon from './singlePokemon';
 
 const reducer = combineReducers({
   user: userReducer,

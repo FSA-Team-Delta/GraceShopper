@@ -9,10 +9,7 @@ import {auth} from '../store';
 const AuthForm = props => {
   const {name, displayName, handleSubmit, error} = props;
 
-  // console.log('propsssss', props);
-
   if (props.name === 'signup') {
-    // console.log('signup', props);
     return (
       <div>
         <form onSubmit={handleSubmit} name={name}>
@@ -120,12 +117,27 @@ const mapDispatch = dispatch => {
   return {
     handleSubmit(evt) {
       evt.preventDefault();
-      // console.log('event.target', evt.target.name);
-      const formName = evt.target.firstName.value;
-      console.log('formName', formName);
-      const email = evt.target.email.value;
+      const {
+        firstName: {value: first},
+        lastName: {value: last},
+        email: {value: mail},
+        username: {value: username1},
+        address: {value: address1},
+        phone: {value: phone1},
+        password: {value: password1}
+      } = evt.target;
+
+      const info = {
+        firstName: first,
+        lastName: last,
+        email: mail,
+        username: username1,
+        address: address1,
+        phone: phone1,
+        password: password1
+      };
       const password = evt.target.password.value;
-      dispatch(auth(email, password, formName));
+      dispatch(auth(info, evt.target.name));
     }
   };
 };
