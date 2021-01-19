@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-dom';
+import {Link} from 'react-router-dom';
 import {fetchProducts} from '../store/products';
 import '../css-components/AllProducts.css';
 import {Button} from '@material-ui/core';
@@ -16,18 +16,18 @@ class AllProducts extends React.Component {
         <div className="allProducts__item">
           {this.props.products.map(product => {
             return (
-              <div key={product.id} className="allProducts__eachCard">
-                <img src={product.imageUrl} />
+              <div key={product.id} className="allProducts__card">
+                <Link to={`/product/${product.id}`}>
+                  <img src={product.imageUrl} />
+                </Link>
                 <div className="allProducts__buy">
                   <Button variant="contained" color="primary" size="small">
                     BUY
                   </Button>
                   <h3>Price: ${product.price}</h3>
-                </div>
               </div>
             );
           })}
-        </div>
       </div>
     );
   }

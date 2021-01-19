@@ -1,18 +1,26 @@
 .allProducts__header {
-  color: red;
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-size: 50px;
 }
 
 .allProducts__item {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-evenly;
 
-  /* transition-timing-function: ease-in;
-  transition: all 0.5s; */
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .allProducts__buy {
   display: flex;
   justify-content: space-around;
   margin-bottom: 30px;
+}
+
+.allProducts__card:hover {
+  transition: transform 450ms;
+  transform: scale(1.08);
 }

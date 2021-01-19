@@ -1,0 +1,18 @@
+.Cart__header {
+  display: flex;
+  justify-content: left;
+  color: black;
+  font-size: 50px;
+}
+
+.Cart__items {
+  display: flex;
+}
+
+.Cart__description {
+  display: flex;
+  margin-left: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -6,6 +6,9 @@ import {Login, Signup, UserHome} from '.';
 import {me} from '../store';
 import AllProducts from './AllProducts';
 import SinglePokemon from './SingleProduct';
+import Order from './Order';
+import GuestHome from './GuestHome';
+import Checkout from './Checkout';
 
 /**
  * COMPONENT
@@ -21,10 +24,13 @@ class Routes extends Component {
     return (
       <Switch>
         {/* Routes placed here are available to all visitors */}
+        <Route path="/guesthome" component={GuestHome} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route exact path="/product" component={AllProducts} />
         <Route exact path="/product/:id" component={SinglePokemon} />
+        <Route path="/order" component={Order} />
+        <Route path="/checkout" component={Checkout} />
 
         {isLoggedIn && (
           <Switch>
