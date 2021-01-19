@@ -136,7 +136,7 @@ const mapDispatch = dispatch => {
         phone: phone1,
         password: password1
       };
-      const password = evt.target.password.value;
+
       dispatch(auth(info, evt.target.name));
     }
   };
