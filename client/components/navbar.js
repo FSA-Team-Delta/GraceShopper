@@ -22,6 +22,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
+
           <br />
           <img
             width="50"
@@ -40,6 +41,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
           <Link to="/order">
             <ShoppingCartIcon /> Cart
           </Link>
+
         </div>
       )}
     </nav>
