@@ -8,6 +8,7 @@ import AllProducts from './AllProducts';
 import SinglePokemon from './SingleProduct';
 import Order from './Order';
 import GuestHome from './GuestHome';
+import Checkout from './Checkout';
 
 /**
  * COMPONENT
@@ -29,6 +30,7 @@ class Routes extends Component {
         <Route exact path="/product" component={AllProducts} />
         <Route exact path="/product/:id" component={SinglePokemon} />
         <Route path="/order" component={Order} />
+        <Route path="/checkout" component={Checkout} />
 
         {isLoggedIn && (
           <Switch>

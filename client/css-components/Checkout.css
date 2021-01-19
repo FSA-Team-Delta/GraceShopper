@@ -1,0 +1,35 @@
+/* .chooseYou { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+      
+    /* Preserve aspet ratio */
+/* min-width: 0%;
+    min-height: 30%;
+    z-index:-5
+
+  } */
+
+/* .checkoutPage {
+      background-color: blue;
+      border-color: yellow;
+      z-index: -6;
+  } */
+
+.checkoutText {
+  font-size: 30px;
+  -webkit-font-smoothing: none;
+  font-family: 'pokemon-font', monospace;
+  color: rgb(255, 255, 0);
+}
+.checkoutPage {
+  background: url('https://assets.nst.com.my/images/articles/M20_010.tif_1512972462.jpg')
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-width: 10%;
+  min-height: 30%;
+  background-color: blue;
+}
