@@ -11,7 +11,7 @@ class AllProducts extends React.Component {
   }
   render() {
     return (
-      <div className="allProducts__body">
+      <div>
         <h1 className="allProducts__header">Pokemon Cards For Sale</h1>
         <div className="allProducts__item">
           {this.props.products.map(product => {
@@ -25,11 +25,9 @@ class AllProducts extends React.Component {
                     BUY
                   </Button>
                   <h3>Price: ${product.price}</h3>
-                </div>
               </div>
             );
           })}
-        </div>
       </div>
     );
   }
