@@ -27,7 +27,7 @@ const User = db.define('user', {
     unique: true
   },
   phone: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.BIGINT,
     isNumeric: true,
     allowNull: false
   },

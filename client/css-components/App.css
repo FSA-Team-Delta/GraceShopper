@@ -1,0 +1,16 @@
+.app__images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.app__image {
+  margin-bottom: 50px;
+}
+
+.app__image:hover {
+  transition: transform 450ms;
+  transform: scale(1.08);
+}

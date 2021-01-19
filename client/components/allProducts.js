@@ -25,9 +25,11 @@ class AllProducts extends React.Component {
                     BUY
                   </Button>
                   <h3>Price: ${product.price}</h3>
+                </div>
               </div>
             );
           })}
+        </div>
       </div>
     );
   }

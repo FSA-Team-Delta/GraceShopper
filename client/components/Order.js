@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {fetchOrder} from '../store/order';
 import {Button} from '@material-ui/core';
 import '../css-components/Order.css';
+import {Link} from 'react-router-dom';
 
 // sample data format displayed.. pending changes for data flow
 
@@ -91,9 +92,12 @@ export class Order extends React.Component {
           </div>
           <h2>Total: $20.00</h2>
           <h2>Item Count: 2</h2>
-          <Button variant="contained" color="secondary" size="medium">
-            Checkout
-          </Button>
+          <Link to="/checkout">
+            {' '}
+            <Button variant="contained" color="secondary" size="medium">
+              Checkout
+            </Button>
+          </Link>
         </div>
       </div>
     );
