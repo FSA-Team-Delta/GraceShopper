@@ -3,10 +3,13 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {logout} from '../store';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
-    <h1> Navbar</h1>
     <nav>
       {isLoggedIn ? (
         <div>
@@ -19,10 +22,26 @@ const Navbar = ({handleClick, isLoggedIn}) => (
       ) : (
         <div>
           {/* The navbar will show these links before you log in */}
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-          <Link to="/product">Cards For Sale</Link>
-          <Link to="/checkout">Checkout</Link>
+
+          <br />
+          <img
+            width="50"
+            height="50"
+            src="https://pngimg.com/uploads/pokeball/pokeball_PNG30.png"
+          />
+          <Link to="/login">
+            <LockOpenIcon /> Login
+          </Link>
+          <Link to="/signup">
+            <AssignmentIcon /> Sign Up
+          </Link>
+          <Link to="/product">
+            <MenuIcon /> Cards For Sale
+          </Link>
+          <Link to="/order">
+            <ShoppingCartIcon /> Cart
+          </Link>
+
         </div>
       )}
     </nav>
