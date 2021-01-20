@@ -7,45 +7,45 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import MenuIcon from '@material-ui/icons/Menu';
+import '../css-components/Navbar.css';
 
 const Navbar = ({handleClick, isLoggedIn}) => (
-  <div>
-    <nav>
-      {isLoggedIn ? (
-        <div>
-          {/* The navbar will show these links after you log in */}
-          <Link to="/home">Home</Link>
-          <a href="#" onClick={handleClick}>
-            Logout
-          </a>
-        </div>
-      ) : (
-        <div>
-          {/* The navbar will show these links before you log in */}
+  <>
+    <div className="navbar__body">
+      <nav>
+        {isLoggedIn ? (
+          <div>
+            <Link to="/home">Home</Link>
+            <a href="#" onClick={handleClick}>
+              Logout
+            </a>
+          </div>
+        ) : (
+          <div>
+            <br />
+            <img
+              className="navbar__image"
+              src="https://pngimg.com/uploads/pokeball/pokeball_PNG30.png"
+            />
 
-          <br />
-          <img
-            width="50"
-            height="50"
-            src="https://pngimg.com/uploads/pokeball/pokeball_PNG30.png"
-          />
-          <Link to="/login">
-            <LockOpenIcon /> Login
-          </Link>
-          <Link to="/signup">
-            <AssignmentIcon /> Sign Up
-          </Link>
-          <Link to="/product">
-            <MenuIcon /> Cards For Sale
-          </Link>
-          <Link to="/order">
-            <ShoppingCartIcon /> Cart
-          </Link>
-        </div>
-      )}
-    </nav>
-    <hr />
-  </div>
+            <Link to="/login">
+              <LockOpenIcon /> Login
+            </Link>
+            <Link to="/signup">
+              <AssignmentIcon /> Sign Up
+            </Link>
+            <Link to="/product">
+              <MenuIcon /> Cards For Sale
+            </Link>
+            <Link to="/order">
+              <ShoppingCartIcon /> Cart
+            </Link>
+          </div>
+        )}
+      </nav>
+    </div>
+    <hr className="nabvar__hr" />
+  </>
 );
 
 /**
