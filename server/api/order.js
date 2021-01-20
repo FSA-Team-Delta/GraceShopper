@@ -30,10 +30,23 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/:id', async (req, res, next) => {
+  // try {
+  //   const order = await Order.create(req.body);
+  //   res.json(order);
+  // } catch (err) {
+  //   next(err);
+  // }
   try {
-    const order = await Order.create(req.body);
-    res.json(order);
+    const order = await Order.findOrCreate({
+      where: {
+        completed: false,
+        userId: req.bo.UserId,
+      },
+      defaults: {
+        shippingOption: '2 Week Ground Shipping',
+      },
+    });
   } catch (err) {
     next(err);
   }
@@ -41,8 +54,6 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    // console.log('$$$$$$$$$$$$$$$$', req.body);
-
     const order = await Order.findByPk(req.params.id);
     const product = await Product.findByPk(req.body.id);
 
@@ -55,5 +66,18 @@ router.put('/:id', async (req, res, next) => {
     next(err);
   }
 });
+
+// router.delete('/:id', async (req, res, next) => {
+//   try {
+//     const product = await Product.findByPk(req.params.id);
+//     if (!product) res.sendStatus(404);
+//     else {
+//       await product.destroy();
+//       res.sendStatus(200);
+//     }
+//   } catch (err) {
+//     next(err);
+//   }
+// });
 
 module.exports = router;
