@@ -2,12 +2,12 @@ import axios from 'axios';
 
 const SET_PRODUCTS = 'SET_PRODUCTS';
 
-export const setProducts = products => {
+export const setProducts = (products) => {
   return {type: SET_PRODUCTS, products};
 };
 
 export const fetchProducts = () => {
-  return async dispatch => {
+  return async (dispatch) => {
     try {
       const {data} = await axios.get('/api/product');
       dispatch(setProducts(data));

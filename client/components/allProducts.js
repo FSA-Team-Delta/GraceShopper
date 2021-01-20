@@ -14,7 +14,7 @@ class AllProducts extends React.Component {
       <div>
         <h1 className="allProducts__header">Pokemon Cards For Sale</h1>
         <div className="allProducts__item">
-          {this.props.products.map(product => {
+          {this.props.products.map((product) => {
             return (
               <div key={product.id} className="allProducts__card">
                 <Link to={`/product/${product.id}`}>
@@ -35,15 +35,15 @@ class AllProducts extends React.Component {
   }
 }
 
-const mapState = state => {
+const mapState = (state) => {
   return {
-    products: state.products
+    products: state.products,
   };
 };
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
-    getProducts: () => dispatch(fetchProducts())
+    getProducts: () => dispatch(fetchProducts()),
   };
 };
 

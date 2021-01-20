@@ -1,11 +1,12 @@
 const router = require('express').Router();
 const {Product_Order} = require('../db/models');
 const Order = require('../db/models/order');
+const {Product} = require('./product');
 
-router.get('/', async (req, res, next) => {
+router.get('/:id', async (req, res, next) => {
   try {
-    const order = await Order.findAll();
-    res.json(order);
+    const order = await Order.findByPk(req.params.id);
+    res.json(await order.getProducts());
   } catch (err) {
     next(err);
   }
@@ -20,15 +21,12 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-//Fix put routes for checkout...
-// router.put('/', async (req, res, next) => {
+// router.put('/:id', async (req, res, next) => {
 //   try {
-//     const id = req.params;
-//     console.log('id console', id);
-//     const order = await Order.findByPk(id);
-//     res.send(await order.update(req.body));
+//     const product = await Product.findByPk(req.params.id);
+//     res.json(product);
 //   } catch (err) {
-//     next(err);
+//     console.err(err);
 //   }
 // });
 

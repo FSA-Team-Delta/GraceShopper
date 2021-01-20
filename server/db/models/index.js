@@ -12,7 +12,7 @@ const Product_Order = require('./product_order');
  */
 
 Product.belongsToMany(Order, {
-  through: Product_Order
+  through: Product_Order,
 });
 Order.belongsToMany(Product, {through: Product_Order});
 
@@ -30,5 +30,5 @@ module.exports = {
   User,
   Product,
   Order,
-  Product_Order
+  Product_Order,
 };

@@ -4,14 +4,14 @@ import axios from 'axios';
 export const SINGLE_POKEMON = 'SINGLE_POKEMON';
 
 //action creator
-export const _singlePokemon = pokemon => ({
+export const _singlePokemon = (pokemon) => ({
   type: SINGLE_POKEMON,
-  pokemon
+  pokemon,
 });
 
 //thunk
-export const fetchPokemon = id => {
-  return async dispatch => {
+export const fetchPokemon = (id) => {
+  return async (dispatch) => {
     try {
       const {data} = await axios.get(`/api/product/${id}`);
       dispatch(_singlePokemon(data));
