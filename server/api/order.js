@@ -43,8 +43,6 @@ router.post('/:id', async (req, res, next) => {
       },
     });
 
-    console.log(order);
-
     const product = await Product.findByPk(productId);
 
     await order.addProduct(product);
