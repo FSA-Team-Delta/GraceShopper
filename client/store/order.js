@@ -1,37 +1,11 @@
 import axios from 'axios';
 
 const SET_ORDER = 'SET_ORDER';
-const ADD_PRODUCT = 'ADD_PRODUCT';
-const DELETE_PRODUCT = 'DELETE_PRODUCT';
-const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
 
 export const _setOrders = (orders) => ({
   type: SET_ORDER,
   orders,
 });
-
-export const _addOrder = (order) => ({
-  type: ADD_PRODUCT,
-  order,
-});
-
-export const _deleteOrder = (order) => ({
-  type: DELETE_PRODUCT,
-  order,
-});
-
-export const _changeQuantity = (product, quantity) => ({
-  type: CHANGE_QUANTITY,
-  quantity,
-  product,
-});
-
-export const deleteProduct = (product) => ({
-  type: DELETE_PRODUCT,
-  product,
-});
-
-//THUNKS
 
 export const fetchOrder = () => {
   return async (dispatch) => {
@@ -44,23 +18,47 @@ export const fetchOrder = () => {
   };
 };
 
-export const addOrder = (userId, product) => {
+const ADD_PRODUCT = 'ADD_PRODUCT';
+
+export const _addProduct = (product) => ({
+  type: ADD_PRODUCT,
+  product,
+});
+
+export const addProduct = (userId, product) => {
   return async (dispatch) => {
     try {
-      const {data} = await axios.post(`/api/order${userId}`, product);
+      const {data} = await axios.post(`/api/order/${userId}`, product);
 
-      dispatch(_addOrder(data));
+      dispatch(_addProduct(data));
     } catch (err) {
       console.log(err);
     }
   };
 };
 
-export const filler = (order) => {
+const DELETE_PRODUCT = 'DELETE_PRODUCT';
+
+export const deleteProduct = (product) => ({
+  type: DELETE_PRODUCT,
+  product,
+});
+
+const CHANGE_QUANTITY = 'CHANGE_QUANTITY';
+
+export const _changeQuantity = (product, quantity) => ({
+  type: CHANGE_QUANTITY,
+  quantity,
+  product,
+});
+
+//THUNKS
+
+export const removeProduct = (product) => {
   return async (dispatch) => {
     try {
-      await axios.put(`/api/order/${order.id}`);
-      dispatch(_deleteOrder(order));
+      await axios.delete(`/api/order/${product.id}`);
+      dispatch(deleteProduct(product));
     } catch (err) {
       console.log(err);
     }
@@ -74,11 +72,9 @@ export default function orderReducer(state = initialState, action) {
     case SET_ORDER:
       return action.orders;
     case ADD_PRODUCT:
-      return [...state, action.order];
+      return [...state, action.product];
     case DELETE_PRODUCT:
-      return state.filter(order);
-    //   case PUT_ORDER:
-    //     // return [...state, action.pokecard];
+      return state.filter((product) => product.id !== action.product.id);
     default:
       return state;
   }
