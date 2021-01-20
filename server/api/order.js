@@ -58,9 +58,9 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.post('/:id', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
-    const userId = req.params.id;
+    const userId = req.session.passport.user;
     const productId = req.body.id;
 
     const [order, wasCreated] = await Order.findOrCreate({
@@ -76,6 +76,8 @@ router.post('/:id', async (req, res, next) => {
     const product = await Product.findByPk(productId);
 
     await order.addProduct(product);
+
+    console.log(req.body);
 
     res.send(product);
   } catch (err) {
