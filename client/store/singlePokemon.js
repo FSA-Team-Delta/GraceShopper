@@ -15,7 +15,6 @@ export const fetchPokemon = id => {
     try {
       const {data} = await axios.get(`/api/product/${id}`);
       dispatch(_singlePokemon(data));
-      console.log('inside thunk', data);
     } catch (error) {
       console.error(error);
     }
