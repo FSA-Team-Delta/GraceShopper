@@ -1,13 +1,15 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchOrder} from '../store/order';
+import {fetchOrder, checkoutOrder} from '../store/order';
 import '../css-components/Checkout.css';
 
 export class Checkout extends React.Component {
   componentDidMount() {
     this.props.fetchOrder();
+    this.props.checkoutOrder();
   }
   render() {
+    console.log('this.props', this.props);
     return (
       <div className="checkoutPage">
         <div>
@@ -58,7 +60,9 @@ export class Checkout extends React.Component {
               value=""
               onChange={this.handleChange}
             />
-            <button type="submit">Pay With Card</button>
+            <button type="submit" onClick={() => this.props.checkoutOrder()}>
+              Pay With Card
+            </button>
           </form>
           <div>
             {this.props.order.map((order) => {
@@ -80,6 +84,7 @@ export class Checkout extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+
   return {
     order: state.order,
   };
@@ -88,6 +93,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchOrder: () => dispatch(fetchOrder()),
+    checkoutOrder: () => dispatch(checkoutOrder()),
+
   };
 };
 

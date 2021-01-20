@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const SET_ORDER = 'SET_ORDER';
 
+
 const _setOrders = (orders) => ({
   type: SET_ORDER,
   orders,
@@ -25,6 +26,7 @@ const _addProduct = (product) => ({
   product,
 });
 
+
 export const addProduct = (product) => {
   return async (dispatch) => {
     try {
@@ -39,6 +41,7 @@ export const addProduct = (product) => {
 
 const DELETE_PRODUCT = 'DELETE_PRODUCT';
 
+
 const deleteProduct = (product) => ({
   type: DELETE_PRODUCT,
   product,
@@ -51,6 +54,7 @@ const _changeQuantity = (product, quantity) => ({
   quantity,
   product,
 });
+
 
 export const changeProductQuantity = (product, quantity) => {
   return async (dispatch) => {
@@ -74,6 +78,20 @@ export const removeProduct = (product) => {
   };
 };
 
+const CHECKOUT_ORDER = 'CHECKOUT_ORDER';
+
+export const _checkoutOrder = (order) => ({
+  type: CHECKOUT_ORDER,
+  order,
+});
+
+export const checkoutOrder = (order) => {
+  return async (dispatch) => {
+    const completed = await axios.put(`/api/order`, order);
+    dispatch(_checkoutOrder(completed));
+  };
+};
+
 const initialState = [];
 
 export default function orderReducer(state = initialState, action) {
@@ -84,6 +102,10 @@ export default function orderReducer(state = initialState, action) {
       return [...state, action.product];
     case DELETE_PRODUCT:
       return state.filter((product) => product.id !== action.product.id);
+    case CHECKOUT_ORDER:
+      return state.map((order) =>
+        order.id == action.order.id ? action.order : order
+      );
     case CHANGE_QUANTITY:
       return [...state, action.product];
     default:
