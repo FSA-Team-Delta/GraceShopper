@@ -3,8 +3,10 @@ const Order = require('../db/models/order');
 
 router.get('/', async (req, res, next) => {
   try {
+    // console.log(Order.prototype);
     const order = await Order.findAll();
-    res.json(order);
+    console.log('ORDER FIND ALL', order);
+    res.json(await order[0].getProducts());
   } catch (err) {
     next(err);
   }

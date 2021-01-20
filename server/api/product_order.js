@@ -4,29 +4,27 @@
 // //Post route /api/product_order to create a new product order
 // router.post('/', async (req, res, next) => {
 //   try {
-//     const {orderId, productId, quantity, priceHistory} = req.body
+//     const {orderId, productId, quantity, priceHistory} = req.body;
 //     const productInfo = await Product_Order.create({
 //       orderId,
 //       productId,
 //       quantity,
-//       priceHistory
-//     })
-//     const prod = await Product.findById(productInfo.productId)
+//       priceHistory,
+//     });
+//     const prod = await Product.findById(productInfo.productId);
 //     const product_orderResponse = {
 //       ...productInfo.dataValue,
-//     }
-//   }catch (err) {
-//     next(err)
+//     };
+//   } catch (err) {
+//     next(err);
 //   }
-// })
+// });
 
-
-// router.delete('/:product_orderId', async (req, res, next) => {
-//   try {
-//     const 
-//   }
-// })
-
+// // router.delete('/:product_orderId', async (req, res, next) => {
+// //   try {
+// //     const
+// //   }
+// // })
 
 // router.get('/', async (req, res, next) => {
 //   try {

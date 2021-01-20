@@ -5,16 +5,16 @@ const Order = db.define('order', {
   completed: {
     type: Sequelize.BOOLEAN,
     allowNull: false,
-    defaultValue: false
+    defaultValue: false,
   },
-  dateOfPurchase: {
-    type: Sequelize.DATE,
-    allowNull: false
-  },
+  // dateOfPurchase: {
+  //   type: Sequelize.DATE,
+  //   allowNull: false
+  // },
   shippingOption: {
     type: Sequelize.STRING,
-    defaultValue: '2 Week Ground Shipping'
-  }
+    defaultValue: '2 Week Ground Shipping',
+  },
 });
 
 module.exports = Order;
