@@ -22,7 +22,7 @@ class AllProducts extends React.Component {
                 </Link>
                 <div className="allProducts__buy">
                   <Button variant="contained" color="primary" size="small">
-                    BUY
+                    Add to Cart
                   </Button>
                   <h3>Price: ${product.price}</h3>
                 </div>

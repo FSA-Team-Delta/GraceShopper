@@ -22,9 +22,9 @@ export class Order extends React.Component {
           <h2>Order ID: 1</h2>
           <div className="Cart__items">
             <div className="Cart__description">
-              <img src="https://images.pokemontcg.io/xy7/10.png" />
+              {/* <img src="https://images.pokemontcg.io/xy7/10.png" />
               <h4>Item: Vespiquen</h4>
-              <h4>Price: $10.00</h4>
+              <h4>Price: $10.00</h4> */}
             </div>
             <div className="Cart__description">
               <div>
@@ -57,11 +57,11 @@ export class Order extends React.Component {
           </div>
           <div className="Cart__items">
             <div className="Cart__description">
-              <img src="https://images.pokemontcg.io/xy7/10.png" />
+              {/* <img src="https://images.pokemontcg.io/xy7/10.png" />
               <h4>Item: Vespiquen</h4>
-              <h4>Price: $10.00</h4>
+              <h4>Price: $10.00</h4> */}
             </div>
-            <div className="Cart__description">
+            {/* <div className="Cart__description">
               <div>
                 <form action="/action_page.php">
                   <input type="number" id="quantity" name="quantity" step="1" />
@@ -79,7 +79,7 @@ export class Order extends React.Component {
                 </Button>
               </div>
               <br />
-            </div>
+            </div> */}
             {/* {this.props.order.map((elem) => {
             return (
               <div>
@@ -104,15 +104,15 @@ export class Order extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    order: state.order
+    order: state.order,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    fetchOrder: () => dispatch(fetchOrder())
+    fetchOrder: () => dispatch(fetchOrder()),
   };
 };
 

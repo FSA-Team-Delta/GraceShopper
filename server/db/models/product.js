@@ -4,59 +4,59 @@ const db = require('../db');
 const Product = db.define('product', {
   id: {
     type: Sequelize.STRING,
-    primaryKey: true
+    primaryKey: true,
   },
   name: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
   },
   imageUrlHiRes: {
     type: Sequelize.TEXT,
     validate: {
-      isUrl: true
+      isUrl: true,
     },
-    allowNull: false
+    allowNull: false,
   },
   imageUrl: {
     type: Sequelize.TEXT,
     validate: {
-      isUrl: true
+      isUrl: true,
     },
-    allowNull: false
+    allowNull: false,
   },
   hp: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
   },
   resistances: {
-    type: Sequelize.JSON
+    type: Sequelize.JSON,
   },
   weaknesses: {
-    type: Sequelize.ARRAY(Sequelize.JSON)
+    type: Sequelize.ARRAY(Sequelize.JSON),
   },
   convertedRetreatCost: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
   },
   atttacks: {
-    type: Sequelize.ARRAY(Sequelize.JSON)
+    type: Sequelize.ARRAY(Sequelize.JSON),
   },
   types: {
     type: Sequelize.ARRAY(Sequelize.STRING),
-    allowNull: true
+    allowNull: true,
   },
   rarity: {
     type: Sequelize.STRING,
     allowNull: false,
-    defaultValue: 'common'
+    defaultValue: 'common',
   },
   price: {
     type: Sequelize.DECIMAL,
     allowNull: false,
-    defaultValue: 0
+    defaultValue: 0,
   },
   inventory: {
     type: Sequelize.INTEGER,
-    defaultValue: 0
-  }
+    defaultValue: 0,
+  },
 });
 
 //hp, resistance, weakness, retreate cost, attacks, image, name

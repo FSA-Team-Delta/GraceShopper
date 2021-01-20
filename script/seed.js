@@ -7,10 +7,12 @@ const {User, Checkout, Product, Cart, Order} = require('../server/db/models');
 
 async function seed() {
   await db.sync({force: true});
-  const {data: {cards}} = await axios.get('https://api.pokemontcg.io/v1/cards');
+  const {
+    data: {cards},
+  } = await axios.get('https://api.pokemontcg.io/v1/cards');
   await Promise.all(
-    cards.map(pokemon => {
-      pokemon.price = Math.floor(Math.random() * 10);
+    cards.map((pokemon) => {
+      pokemon.price = Math.floor(Math.random() * 100) + 1;
       return Product.create(pokemon);
     })
   );
