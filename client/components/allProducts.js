@@ -6,8 +6,15 @@ import '../css-components/AllProducts.css';
 import {Button} from '@material-ui/core';
 
 class AllProducts extends React.Component {
+  constructor() {
+    super();
+    this.onClick = this.onClick.bind(this);
+  }
   componentDidMount() {
     this.props.getProducts();
+  }
+  onClick(product) {
+    console.log('clicked', product);
   }
   render() {
     return (
@@ -21,7 +28,12 @@ class AllProducts extends React.Component {
                   <img src={product.imageUrl} />
                 </Link>
                 <div className="allProducts__buy">
-                  <Button variant="contained" color="primary" size="small">
+                  <Button
+                    variant="contained"
+                    onClick={() => this.onClick(product)}
+                    color="primary"
+                    size="small"
+                  >
                     Add to Cart
                   </Button>
                   <h3>Price: ${product.price}</h3>

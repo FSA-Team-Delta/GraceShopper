@@ -1,6 +1,6 @@
-const router = require('express').Router()
-const {User} = require('../db/models')
-module.exports = router
+const router = require('express').Router();
+const {User} = require('../db/models');
+module.exports = router;
 
 router.get('/', async (req, res, next) => {
   try {
@@ -8,10 +8,22 @@ router.get('/', async (req, res, next) => {
       // explicitly select only the id and email fields - even though
       // users' passwords are encrypted, it won't help if we just
       // send everything to anyone who asks!
-      attributes: ['id', 'email']
-    })
-    res.json(users)
+      attributes: ['id', 'email'],
+    });
+    res.json(users);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
+});
+
+router.post('/', async (req, res, next) => {
+  try {
+    const userInfo = req.body;
+    const newUser = await User.create(userInfo);
+
+    res.send('l;kj');
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+});
