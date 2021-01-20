@@ -10,3 +10,10 @@
   display: flex;
   justify-content: space-between;
 }
+
+.singleProduct__error {
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

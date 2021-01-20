@@ -14,6 +14,9 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const item = await Product.findByPk(req.params.id);
+    if (!item) {
+      res.send('Pokemon not found');
+    }
     res.send(item);
   } catch (error) {
     next(error);
