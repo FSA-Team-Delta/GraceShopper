@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {fetchProducts} from '../store/products';
+import {addProduct} from '../store/order';
+
 import '../css-components/AllProducts.css';
 import {Button} from '@material-ui/core';
 
@@ -15,6 +17,7 @@ class AllProducts extends React.Component {
   }
   onClick(product) {
     console.log('clicked', product);
+    this.props.addProduct(product);
   }
   render() {
     return (
@@ -56,6 +59,7 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     getProducts: () => dispatch(fetchProducts()),
+    addProduct: (product) => dispatch(addProduct(product)),
   };
 };
 
