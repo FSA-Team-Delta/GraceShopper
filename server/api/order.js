@@ -21,8 +21,6 @@ const {Product} = require('../db/models');
 
 router.put('/', async (req, res, next) => {
   try {
-    console.log(req.session.passport.user);
-    // console.log(req.session.passport)
     const order = await Order.findOne({
       where: {
         completed: false,
@@ -34,15 +32,6 @@ router.put('/', async (req, res, next) => {
       await order.save();
     }
     res.send(order);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.post('/', async (req, res, next) => {
-  try {
-    const order = await Order.create(req.body);
-    res.json(order);
   } catch (err) {
     next(err);
   }
