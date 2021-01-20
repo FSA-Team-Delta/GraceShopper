@@ -7,10 +7,6 @@ const Order = db.define('order', {
     allowNull: false,
     defaultValue: false
   },
-  dateOfPurchase: {
-    type: Sequelize.DATE,
-    allowNull: false
-  },
   shippingOption: {
     type: Sequelize.STRING,
     defaultValue: '2 Week Ground Shipping'
