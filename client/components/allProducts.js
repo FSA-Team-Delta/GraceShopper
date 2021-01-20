@@ -8,20 +8,40 @@ import {Button} from '@material-ui/core';
 class AllProducts extends React.Component {
   componentDidMount() {
     this.props.getProducts();
+    console.log('$$$$$$$$', this.props);
   }
+
+  onClickHandler = product => {
+    //works
+    console.log('click', product);
+  };
+
   render() {
+    if (this.props.pokemon === 'Pokemon not found') {
+      return (
+        <div>
+          <h1>Pokemon Cards not found</h1>{' '}
+          <img src="https://media.giphy.com/media/nVTa8D8zJUc2A/giphy.gif" />
+        </div>
+      );
+    }
     return (
       <div>
         <h1 className="allProducts__header">Pokemon Cards For Sale</h1>
         <div className="allProducts__item">
-          {this.props.products.map((product) => {
+          {this.props.products.map(product => {
             return (
               <div key={product.id} className="allProducts__card">
                 <Link to={`/product/${product.id}`}>
                   <img src={product.imageUrl} />
                 </Link>
                 <div className="allProducts__buy">
-                  <Button variant="contained" color="primary" size="small">
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    onClick={() => this.onClickHandler(product)}
+                  >
                     Add to Cart
                   </Button>
                   <h3>Price: ${product.price}</h3>
@@ -35,15 +55,15 @@ class AllProducts extends React.Component {
   }
 }
 
-const mapState = (state) => {
+const mapState = state => {
   return {
-    products: state.products,
+    products: state.products
   };
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = dispatch => {
   return {
-    getProducts: () => dispatch(fetchProducts()),
+    getProducts: () => dispatch(fetchProducts())
   };
 };
 

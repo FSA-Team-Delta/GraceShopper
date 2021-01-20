@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const SET_ORDER = 'SET_ORDER';
-// const CREATE_ORDER = 'CREATE_ORDER'
+const ADD_ORDER = 'ADD_ORDER';
 const GET_ORDER = 'GET_ORDER';
 // const DELETE_ORDER = 'DELETE_ORDER'
 // const PUT_ORDER = 'PUT_ORDER'
@@ -14,10 +14,10 @@ export const getOrder = order => ({
   type: GET_ORDER,
   order
 });
-// export const createOrder = (order) => ({
-//   type: CREATE_ORDER,
-//   order,
-// });
+export const _addOrder = order => ({
+  type: ADD_ORDER,
+  order
+});
 
 // export const deleteOrder = (pokecard) => ({
 //     type: DELETE_ORDER,
@@ -42,17 +42,17 @@ export const fetchOrder = () => {
   };
 };
 
-// export const addOrder = (newPokecard) => {
-//     return async (dispatch) => {
-//         try {
-//             const res = await axios.post('/api/order', newPokecard)
-//             const createdOrder = res.data
-//             dispatch(createOrders(createdOrder));
-//         } catch (err) {
-//             console.log(err)
-//         }
-//     }
-// }
+export const addOrder = newPokecard => {
+  return async dispatch => {
+    try {
+      console.log('inside addOrder', newPokecard);
+      await axios.post(`/api/order/`, newPokecard);
+      dispatch(_addOrder(newPokecard));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+};
 
 // export const removeOrder = (order) => {
 //     return async (dispatch) => {

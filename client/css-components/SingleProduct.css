@@ -1,9 +1,10 @@
 .singleProduct_setting {
   display: flex;
+  justify-content: center;
 }
 
 .singleProduct-description {
-  margin-left: 10px;
+  margin-left: 30px;
 }
 
 .singleProduct__buy {

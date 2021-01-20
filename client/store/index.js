@@ -2,12 +2,11 @@ import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {createLogger} from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import {composeWithDevTools} from 'redux-devtools-extension';
-import user from './user';
+// import user from './user';
 import userReducer from './user';
 import productsReducer from './products';
 import singlePokemon from './singlePokemon';
 import orderReducer from './order';
-
 
 const reducer = combineReducers({
   user: userReducer,
@@ -22,3 +21,4 @@ const store = createStore(reducer, middleware);
 
 export default store;
 export * from './user';
+export * from './order';
