@@ -26,7 +26,6 @@ const _addProduct = (product) => ({
 });
 
 export const addProduct = (product) => {
-  console.log(product);
   return async (dispatch) => {
     try {
       const {data} = await axios.post(`/api/order`, product);
