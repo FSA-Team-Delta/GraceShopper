@@ -13,7 +13,9 @@ const AuthForm = (props) => {
     return (
       <div>
         <h1>Signup</h1>
-
+        {/* <progress value="1" max="100"> */}
+        {/* progress */}
+        {/* </progress>{' '} */}
         <form onSubmit={handleSubmit} name={name}>
           <div>
             <label htmlFor="email">
