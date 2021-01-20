@@ -17,20 +17,12 @@ export const fetchProducts = () => {
   };
 };
 
-const GET_PRODUCT = 'GET_PRODUCT';
-
-export const getProduct = (product) => {
-  return {type: GET_PRODUCT, product};
-};
-
 const initialState = [];
 
 export default function productsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_PRODUCTS:
       return action.products;
-    case GET_PRODUCT:
-      return [...state, action.product];
     default:
       return state;
   }

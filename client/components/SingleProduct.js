@@ -7,21 +7,20 @@ import {Button} from '@material-ui/core';
 class SinglePokemon extends React.Component {
   componentDidMount() {
     this.props.singlePokemon(this.props.match.params.id);
-    console.log('inside component');
   }
   render() {
+    if (this.props.pokemon === 'Pokemon not found') {
+      return (
+        <div className="singleProduct__error">
+          <h1>Pokemon Card not found</h1>{' '}
+          <img src="https://images.pokemontcg.io/ex1/95_hires.png" />
+        </div>
+      );
+    }
     const image = this.props.pokemon.imageUrl || '';
     const weaknesses = this.props.pokemon.weaknesses || '';
-    const {
-      name,
-      hp,
-      types,
-      rarity,
-      price,
-      inventory
-      // convertedRetreatCost,
-    } = this.props.pokemon;
-    console.log('inside render');
+    const {name, hp, types, rarity, price, inventory} = this.props.pokemon;
+
     return (
       <div className="singleProduct_setting">
         <img src={image} />
@@ -31,7 +30,6 @@ class SinglePokemon extends React.Component {
           <h2>Rarity: {rarity}</h2>
           <h2>Price: {price}</h2>
           <h2>Qty: {inventory}</h2>
-          {/* <h2>convertedRetreatCost: {convertedRetreatCost}</h2> */}
           <div>
             <h2>Weaknesses: {weaknesses.length && weaknesses[0].type}</h2>
             <div className="singleProduct__buy">
@@ -47,13 +45,12 @@ class SinglePokemon extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log('map state', state);
+const mapStateToProps = (state) => {
   return {pokemon: state.pokemon};
 };
 
-const mapDispatchToProps = dispatch => ({
-  singlePokemon: id => dispatch(fetchPokemon(id))
+const mapDispatchToProps = (dispatch) => ({
+  singlePokemon: (id) => dispatch(fetchPokemon(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SinglePokemon);
