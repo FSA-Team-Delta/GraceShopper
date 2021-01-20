@@ -3,8 +3,6 @@ const {Product_Order} = require('../db/models');
 const Order = require('../db/models/order');
 const {Product} = require('../db/models');
 
-// console.log(Order.prototype);
-
 //POST request
 //find all orders
 //find if they have any incomplete
@@ -30,10 +28,26 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post('/:id', async (req, res, next) => {
   try {
-    const order = await Order.create(req.body);
-    res.json(order);
+    const userId = req.params.id;
+    const productId = req.body.id;
+
+    const [order, wasCreated] = await Order.findOrCreate({
+      where: {
+        completed: false,
+        userId,
+      },
+      defaults: {
+        userId,
+      },
+    });
+
+    const product = await Product.findByPk(productId);
+
+    await order.addProduct(product);
+
+    res.send(product);
   } catch (err) {
     next(err);
   }
@@ -41,16 +55,12 @@ router.post('/', async (req, res, next) => {
 
 router.put('/:id', async (req, res, next) => {
   try {
-    // console.log('$$$$$$$$$$$$$$$$', req.body);
-
     const order = await Order.findByPk(req.params.id);
     const product = await Product.findByPk(req.body.id);
 
     await order.addProduct(product);
-    let test = await order.getProducts();
-    console.log('$$$$$$$$$$$$$$$', test[0]);
 
-    res.send(await order.getProducts());
+    res.send(await order);
   } catch (err) {
     next(err);
   }
