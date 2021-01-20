@@ -19,8 +19,38 @@ const {Product} = require('../db/models');
 //let quantity = req.body.quantity
 //have request body, find an order, now we have all we need to put details in the through
 
+router.put('/', async (req, res, next) => {
+  try {
+    console.log(req.session.passport.user);
+    // console.log(req.session.passport)
+    const order = await Order.findOne({
+      where: {
+        completed: false,
+        userId: req.session.passport.user
+      }
+    });
+    if (order) {
+      order.completed = true;
+      await order.save();
+    }
+    res.send(order);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.post('/', async (req, res, next) => {
+  try {
+    const order = await Order.create(req.body);
+    res.json(order);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get('/:id', async (req, res, next) => {
   try {
+    console.log(req.session);
     const order = await Order.findByPk(req.params.id);
     res.json(await order.getProducts());
   } catch (err) {
@@ -36,11 +66,11 @@ router.post('/', async (req, res, next) => {
     const [order, wasCreated] = await Order.findOrCreate({
       where: {
         completed: false,
-        userId,
+        userId
       },
       defaults: {
-        userId,
-      },
+        userId
+      }
     });
 
     const product = await Product.findByPk(productId);
@@ -50,19 +80,6 @@ router.post('/', async (req, res, next) => {
     console.log(req.body);
 
     res.send(product);
-  } catch (err) {
-    next(err);
-  }
-});
-
-router.put('/:id', async (req, res, next) => {
-  try {
-    const order = await Order.findByPk(req.params.id);
-    const product = await Product.findByPk(req.body.id);
-
-    await order.addProduct(product);
-
-    res.send(await order);
   } catch (err) {
     next(err);
   }
