@@ -17,6 +17,12 @@ export const fetchProducts = () => {
   };
 };
 
+export const updateProduct = (product, productId) => {
+  return async (dispatch) => {
+    const {data} = await axios.put(`/api/product/${productId}`, product);
+  };
+};
+
 const initialState = [];
 
 export default function productsReducer(state = initialState, action) {

@@ -3,13 +3,6 @@ const Product = require('./product');
 const Order = require('./order');
 const Sequelize = require('sequelize');
 const Product_Order = require('./product_order');
-/**
- *
- * If we had any associations to make, this would be a great place to put them!
- * ex. if we had another model called BlogPost, we might say:
- *
- *    BlogPost.belongsTo(User)
- */
 
 Product.belongsToMany(Order, {
   through: Product_Order,

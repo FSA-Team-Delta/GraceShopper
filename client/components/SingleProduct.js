@@ -34,7 +34,7 @@ class SinglePokemon extends React.Component {
             <h2>Weaknesses: {weaknesses.length && weaknesses[0].type}</h2>
             <div className="singleProduct__buy">
               <Button variant="contained" color="primary" size="small">
-                BUY
+                Add to Cart
               </Button>
               <input type="number" />
             </div>
