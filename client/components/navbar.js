@@ -11,22 +11,25 @@ import '../css-components/Navbar.css';
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <>
-    <div className="navbar__body">
+    <div>
       <nav>
         {isLoggedIn ? (
           <div>
+            {/* The navbar will show these links after you log in */}
             <Link to="/home">Home</Link>
+            <Link to="/product">
+              <MenuIcon /> Cards For Sale
+            </Link>
+            <Link to="/order">
+              <ShoppingCartIcon /> Cart
+            </Link>
             <a href="#" onClick={handleClick}>
               Logout
             </a>
           </div>
         ) : (
           <div>
-            <br />
-            <img
-              className="navbar__image"
-              src="https://pngimg.com/uploads/pokeball/pokeball_PNG30.png"
-            />
+            {/* The navbar will show these links before you log in */}
 
             <Link to="/login">
               <LockOpenIcon /> Login
@@ -51,17 +54,17 @@ const Navbar = ({handleClick, isLoggedIn}) => (
 /**
  * CONTAINER
  */
-const mapState = state => {
+const mapState = (state) => {
   return {
-    isLoggedIn: !!state.user.id
+    isLoggedIn: !!state.user.id,
   };
 };
 
-const mapDispatch = dispatch => {
+const mapDispatch = (dispatch) => {
   return {
     handleClick() {
       dispatch(logout());
-    }
+    },
   };
 };
 
@@ -72,5 +75,5 @@ export default connect(mapState, mapDispatch)(Navbar);
  */
 Navbar.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired
+  isLoggedIn: PropTypes.bool.isRequired,
 };

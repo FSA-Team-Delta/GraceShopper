@@ -84,7 +84,7 @@ export class Checkout extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('itworks', state);
+
   return {
     order: state.order,
   };
@@ -94,6 +94,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchOrder: () => dispatch(fetchOrder()),
     checkoutOrder: () => dispatch(checkoutOrder()),
+
   };
 };
 

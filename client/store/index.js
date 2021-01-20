@@ -8,12 +8,11 @@ import productsReducer from './products';
 import singlePokemon from './singlePokemon';
 import orderReducer from './order';
 
-
 const reducer = combineReducers({
   user: userReducer,
   products: productsReducer,
   pokemon: singlePokemon,
-  order: orderReducer
+  order: orderReducer,
 });
 const middleware = composeWithDevTools(
   applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))

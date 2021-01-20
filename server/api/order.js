@@ -24,8 +24,8 @@ router.put('/', async (req, res, next) => {
     const order = await Order.findOne({
       where: {
         completed: false,
-        userId: req.session.passport.user
-      }
+        userId: req.session.passport.user,
+      },
     });
     if (order) {
       order.completed = true;
@@ -55,11 +55,11 @@ router.post('/', async (req, res, next) => {
     const [order, wasCreated] = await Order.findOrCreate({
       where: {
         completed: false,
-        userId
+        userId,
       },
       defaults: {
-        userId
-      }
+        userId,
+      },
     });
 
     const product = await Product.findByPk(productId);
