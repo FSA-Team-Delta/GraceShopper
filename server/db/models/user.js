@@ -19,7 +19,10 @@ const User = db.define('user', {
   },
   password: {
     type: Sequelize.STRING,
-    allowNull: false
+    allowNull: false,
+    get() {
+      return () => this.getDataValue('password');
+    }
   },
   username: {
     type: Sequelize.STRING,
@@ -27,7 +30,7 @@ const User = db.define('user', {
     unique: true
   },
   phone: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.BIGINT,
     isNumeric: true,
     allowNull: false
   },
@@ -38,6 +41,12 @@ const User = db.define('user', {
   isAdmin: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  salt: {
+    type: Sequelize.STRING,
+    get() {
+      return () => this.getDataValue('salt');
+    }
   }
 });
 
@@ -46,37 +55,37 @@ module.exports = User;
 /**
  * instanceMethods
  */
-// User.prototype.correctPassword = function(candidatePwd) {
-//   return User.encryptPassword(candidatePwd, this.salt()) === this.password()
-// }
+User.prototype.correctPassword = function(candidatePwd) {
+  return User.encryptPassword(candidatePwd, this.salt()) === this.password();
+};
 
 /**
  * classMethods
  */
-// User.generateSalt = function() {
-//   return crypto.randomBytes(16).toString('base64')
-// }
+User.generateSalt = function() {
+  return crypto.randomBytes(16).toString('base64');
+};
 
-// User.encryptPassword = function(plainText, salt) {
-//   return crypto
-//     .createHash('RSA-SHA256')
-//     .update(plainText)
-//     .update(salt)
-//     .digest('hex')
-// }
+User.encryptPassword = function(plainText, salt) {
+  return crypto
+    .createHash('RSA-SHA256')
+    .update(plainText)
+    .update(salt)
+    .digest('hex');
+};
 
 /**
  * hooks
  */
-// const setSaltAndPassword = user => {
-//   if (user.changed('password')) {
-//     user.salt = User.generateSalt()
-//     user.password = User.encryptPassword(user.password(), user.salt())
-//   }
-// }
+const setSaltAndPassword = user => {
+  if (user.changed('password')) {
+    user.salt = User.generateSalt();
+    user.password = User.encryptPassword(user.password(), user.salt());
+  }
+};
 
-// User.beforeCreate(setSaltAndPassword)
-// User.beforeUpdate(setSaltAndPassword)
-// User.beforeBulkCreate(users => {
-//   users.forEach(setSaltAndPassword)
-// })
+User.beforeCreate(setSaltAndPassword);
+User.beforeUpdate(setSaltAndPassword);
+User.beforeBulkCreate(users => {
+  users.forEach(setSaltAndPassword);
+});
