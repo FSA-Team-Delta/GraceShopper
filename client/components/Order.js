@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {fetchOrder} from '../store/order';
+import {fetchOrder, changeProductQuantity, removeProduct} from '../store/order';
 import {Button} from '@material-ui/core';
 import '../css-components/Order.css';
 import {Link} from 'react-router-dom';
@@ -8,9 +8,20 @@ import {Link} from 'react-router-dom';
 // sample data format displayed.. pending changes for data flow
 
 export class Order extends React.Component {
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   componentDidMount() {
     this.props.fetchOrder();
   }
+
+  handleSubmit(event, product) {
+    event.preventDefault();
+    this.props.changeQuantity(product, {quantity: event.target.quantity.value});
+  }
+
   render() {
     let totalPrice = 0;
     return (
@@ -18,7 +29,8 @@ export class Order extends React.Component {
         <h1 className="Cart__header">Cart</h1>
         <div>
           {this.props.order.map((elem) => {
-            totalPrice += Number(elem.price);
+            console.log(';ldkfja;dlfj', elem);
+            totalPrice += +elem.price * +elem.Product_Order.quantity;
             return (
               <div className="Cart__description" key={elem.id}>
                 <div>
@@ -31,7 +43,7 @@ export class Order extends React.Component {
                   <h3>Price: ${elem.price}</h3>
                 </div>
                 <div>
-                  <form action="/action_page.php">
+                  <form onSubmit={(event) => this.handleSubmit(event, elem)}>
                     <input
                       type="number"
                       id="quantity"
@@ -49,7 +61,12 @@ export class Order extends React.Component {
                   </form>
                 </div>
                 <div>
-                  <Button variant="contained" color="secondary" size="small">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    size="small"
+                    onClick={() => this.props.remove(elem)}
+                  >
                     Remove
                   </Button>
                 </div>
@@ -77,6 +94,9 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchOrder: () => dispatch(fetchOrder()),
+    changeQuantity: (product, quantity) =>
+      dispatch(changeProductQuantity(product, quantity)),
+    remove: (productId) => dispatch(removeProduct(productId)),
   };
 };
 
