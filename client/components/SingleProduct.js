@@ -9,11 +9,11 @@ class SinglePokemon extends React.Component {
     this.props.singlePokemon(this.props.match.params.id);
   }
   render() {
-    if (this.props.pokemon === 'Pokemon not found') {
+    if (!this.props.pokemon.id) {
       return (
         <div className="singleProduct__error">
-          <h1>Pokemon Card not found</h1>{' '}
-          <img src="https://images.pokemontcg.io/ex1/95_hires.png" />
+          <h1>Pokemon Card not found</h1>
+          <img src="https://media.giphy.com/media/nVTa8D8zJUc2A/giphy.gif" />
         </div>
       );
     }
@@ -45,12 +45,12 @@ class SinglePokemon extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {pokemon: state.pokemon};
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  singlePokemon: (id) => dispatch(fetchPokemon(id)),
+const mapDispatchToProps = dispatch => ({
+  singlePokemon: id => dispatch(fetchPokemon(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SinglePokemon);
