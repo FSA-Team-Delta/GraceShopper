@@ -3,10 +3,19 @@ import {connect} from 'react-redux';
 import {fetchPokemon} from '../store/singlePokemon';
 import '../css-components/SingleProduct.css';
 import {Button} from '@material-ui/core';
+import {addProduct} from '../store/order';
 
 class SinglePokemon extends React.Component {
+  constructor() {
+    super();
+    this.onClick = this.onClick.bind(this);
+  }
   componentDidMount() {
     this.props.singlePokemon(this.props.match.params.id);
+  }
+  onClick(product) {
+    console.log('clicked', product);
+    this.props.addProduct(product);
   }
   render() {
     if (!this.props.pokemon.id) {
@@ -33,7 +42,12 @@ class SinglePokemon extends React.Component {
           <div>
             <h2>Weaknesses: {weaknesses.length && weaknesses[0].type}</h2>
             <div className="singleProduct__buy">
-              <Button variant="contained" color="primary" size="small">
+              <Button
+                variant="contained"
+                onClick={() => this.onClick(this.props.pokemon)}
+                color="primary"
+                size="small"
+              >
                 Add to Cart
               </Button>
               <input type="number" />
@@ -45,12 +59,13 @@ class SinglePokemon extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {pokemon: state.pokemon};
 };
 
-const mapDispatchToProps = dispatch => ({
-  singlePokemon: id => dispatch(fetchPokemon(id))
+const mapDispatchToProps = (dispatch) => ({
+  singlePokemon: (id) => dispatch(fetchPokemon(id)),
+  addProduct: (product) => dispatch(addProduct(product)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SinglePokemon);
