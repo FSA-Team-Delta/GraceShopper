@@ -1,15 +1,18 @@
-.Cart__header {
+.order__body {
+  margin-top: 75px;
+}
+.order__header {
   display: flex;
   justify-content: left;
   color: black;
   font-size: 50px;
 }
 
-.Cart__items {
+.order__items {
   display: flex;
 }
 
-.Cart__description {
+.order__description {
   display: flex;
   margin-left: 10px;
   flex-direction: column;

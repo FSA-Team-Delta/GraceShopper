@@ -1,5 +1,7 @@
 .singleProduct_setting {
+  margin-top: 75px;
   display: flex;
+  justify-content: center;
 }
 
 .singleProduct-description {

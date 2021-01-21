@@ -11,42 +11,40 @@ import '../css-components/Navbar.css';
 
 const Navbar = ({handleClick, isLoggedIn}) => (
   <>
-    <div>
-      <nav>
-        {isLoggedIn ? (
-          <div>
-            {/* The navbar will show these links after you log in */}
-            <Link to="/home">Home</Link>
-            <Link to="/product">
-              <MenuIcon /> Cards For Sale
-            </Link>
-            <Link to="/order">
-              <ShoppingCartIcon /> Cart
-            </Link>
-            <a href="#" onClick={handleClick}>
-              Logout
-            </a>
-          </div>
-        ) : (
-          <div>
-            {/* The navbar will show these links before you log in */}
+    <nav>
+      <img
+        className="navbar__image"
+        src="https://pngimg.com/uploads/pokeball/pokeball_PNG30.png"
+      />
+      {isLoggedIn ? (
+        <div>
+          <Link to="/home">Home</Link>
+          <a href="#" onClick={handleClick}>
+            Logout
+          </a>
+        </div>
+      ) : (
+        <></>
+      )}
 
-            <Link to="/login">
-              <LockOpenIcon /> Login
-            </Link>
-            <Link to="/signup">
-              <AssignmentIcon /> Sign Up
-            </Link>
-            <Link to="/product">
-              <MenuIcon /> Cards For Sale
-            </Link>
-            <Link to="/order">
-              <ShoppingCartIcon /> Cart
-            </Link>
-          </div>
-        )}
-      </nav>
-    </div>
+      <div className="navbar__noCart">
+        <Link to="/login">
+          <LockOpenIcon /> Login
+        </Link>
+        <Link to="/signup">
+          <AssignmentIcon /> Sign Up
+        </Link>
+        <Link to="/product">
+          <MenuIcon /> Cards For Sale
+        </Link>
+      </div>
+      <div className="navbar__cart">
+        <Link to="/order">
+          <ShoppingCartIcon /> Cart
+        </Link>
+      </div>
+    </nav>
+
     <hr className="nabvar__hr" />
   </>
 );
@@ -54,17 +52,17 @@ const Navbar = ({handleClick, isLoggedIn}) => (
 /**
  * CONTAINER
  */
-const mapState = (state) => {
+const mapState = state => {
   return {
-    isLoggedIn: !!state.user.id,
+    isLoggedIn: !!state.user.id
   };
 };
 
-const mapDispatch = (dispatch) => {
+const mapDispatch = dispatch => {
   return {
     handleClick() {
       dispatch(logout());
-    },
+    }
   };
 };
 
@@ -75,5 +73,5 @@ export default connect(mapState, mapDispatch)(Navbar);
  */
 Navbar.propTypes = {
   handleClick: PropTypes.func.isRequired,
-  isLoggedIn: PropTypes.bool.isRequired,
+  isLoggedIn: PropTypes.bool.isRequired
 };

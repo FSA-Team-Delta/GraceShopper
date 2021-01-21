@@ -13,20 +13,20 @@ export class Order extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="order__body">
         <div>
           <div>
-            <h1 className="Cart__header">Cart</h1>
+            <h1 className="order__header">Cart</h1>
             <br />
           </div>
           <h2>Order ID: 1</h2>
-          <div className="Cart__items">
-            <div className="Cart__description">
+          <div className="order__items">
+            <div className="order__description">
               {/* <img src="https://images.pokemontcg.io/xy7/10.png" />
               <h4>Item: Vespiquen</h4>
               <h4>Price: $10.00</h4> */}
             </div>
-            <div className="Cart__description">
+            <div className="order__description">
               <div>
                 <form action="/action_page.php">
                   <input type="number" id="quantity" name="quantity" step="1" />
@@ -55,8 +55,8 @@ export class Order extends React.Component {
             );
           })} */}
           </div>
-          <div className="Cart__items">
-            <div className="Cart__description">
+          <div className="order__items">
+            <div className="order__description">
               {/* <img src="https://images.pokemontcg.io/xy7/10.png" />
               <h4>Item: Vespiquen</h4>
               <h4>Price: $10.00</h4> */}
@@ -104,15 +104,15 @@ export class Order extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    order: state.order,
+    order: state.order
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    fetchOrder: () => dispatch(fetchOrder()),
+    fetchOrder: () => dispatch(fetchOrder())
   };
 };
 
