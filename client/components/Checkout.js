@@ -8,7 +8,6 @@ export class Checkout extends React.Component {
     this.props.fetchOrder();
   }
   render() {
-    console.log('this.props', this.props);
     return (
       <div className="checkoutPage">
         <div>
@@ -64,7 +63,7 @@ export class Checkout extends React.Component {
             </button>
           </form>
           <div>
-            {this.props.order.map((order) => {
+            {this.props.order.map(order => {
               return (
                 <div key={this.props.order.id}>
                   <h2>Order ID: {this.props.order.id}</h2>
@@ -82,16 +81,16 @@ export class Checkout extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    order: state.order,
+    order: state.order
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchOrder: () => dispatch(fetchOrder()),
-    checkoutOrder: () => dispatch(checkoutOrder()),
+    checkoutOrder: () => dispatch(checkoutOrder())
   };
 };
 
