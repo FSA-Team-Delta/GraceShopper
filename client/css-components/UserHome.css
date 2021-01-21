@@ -4,6 +4,17 @@
   padding: 0;
 }
 
+.userFirstDiv {
+  margin-top: 55px;
+}
+
+.userImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
 .userHomeText {
   font-size: 30px;
   -webkit-font-smoothing: none;
