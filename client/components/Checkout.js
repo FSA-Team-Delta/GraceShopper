@@ -62,19 +62,7 @@ export class Checkout extends React.Component {
               Pay With Card
             </button>
           </form>
-          <div>
-            {this.props.order.map(order => {
-              return (
-                <div key={this.props.order.id}>
-                  <h2>Order ID: {this.props.order.id}</h2>
-                  <h2>Order Completed: {this.props.order.completed}</h2>
-                  <h2>
-                    Order Shipping Method: {this.props.order.shippingOption}
-                  </h2>
-                </div>
-              );
-            })}
-          </div>
+
         </div>
       </div>
     );
