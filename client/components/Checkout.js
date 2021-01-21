@@ -12,10 +12,6 @@ export class Checkout extends React.Component {
       <div className="checkoutPage">
         <div>
           <h1 className="checkoutText">Complete Your Order</h1>
-          {/* <img
-            src="https://i.etsystatic.com/9456876/r/il/6a64a1/608965579/il_570xN.608965579_5nfa.jpg"
-            className="chooseYou"
-          /> */}
         </div>
         <div>
           <form>
@@ -62,23 +58,22 @@ export class Checkout extends React.Component {
               Pay With Card
             </button>
           </form>
-
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
-    order: state.order
+    order: state.order,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     fetchOrder: () => dispatch(fetchOrder()),
-    checkoutOrder: () => dispatch(checkoutOrder())
+    checkoutOrder: () => dispatch(checkoutOrder()),
   };
 };
 
