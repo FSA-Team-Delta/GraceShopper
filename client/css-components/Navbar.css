@@ -1,14 +1,22 @@
-.navbar__body {
-  margin-right: 20px;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .navbar__image {
   width: 50px;
   height: 50px;
+  margin-left: 25px;
 }
 
-.nabvar__hr {
-  border: 2px solid red;
+nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  padding: 10px;
+  height: 45px;
+
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  background-color: yellow;
+}
+
+.navbar__cart {
+  margin-right: 25px;
 }

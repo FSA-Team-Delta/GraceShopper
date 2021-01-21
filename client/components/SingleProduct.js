@@ -59,13 +59,13 @@ class SinglePokemon extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {pokemon: state.pokemon};
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  singlePokemon: (id) => dispatch(fetchPokemon(id)),
-  addProduct: (product) => dispatch(addProduct(product)),
+const mapDispatchToProps = dispatch => ({
+  singlePokemon: id => dispatch(fetchPokemon(id)),
+  addProduct: product => dispatch(addProduct(product))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SinglePokemon);

@@ -62,22 +62,23 @@ export class Checkout extends React.Component {
               Pay With Card
             </button>
           </form>
+
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    order: state.order,
+    order: state.order
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchOrder: () => dispatch(fetchOrder()),
-    checkoutOrder: () => dispatch(checkoutOrder()),
+    checkoutOrder: () => dispatch(checkoutOrder())
   };
 };
 

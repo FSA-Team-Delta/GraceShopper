@@ -12,9 +12,8 @@ export class Order extends React.Component {
     this.props.fetchOrder();
   }
   render() {
-    console.log('this.props.order', this.props.order);
-    let totalPrice = 0;
     return (
+
       <div className="Cart_items">
         <h1 className="Cart__header">Cart</h1>
         <div>
@@ -64,20 +63,21 @@ export class Order extends React.Component {
             Checkout
           </Button>
         </Link>
+
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-    order: state.order,
+    order: state.order
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    fetchOrder: () => dispatch(fetchOrder()),
+    fetchOrder: () => dispatch(fetchOrder())
   };
 };
 

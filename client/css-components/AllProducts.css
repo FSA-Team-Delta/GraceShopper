@@ -1,3 +1,7 @@
+.allProducts__body {
+  margin-top: 75px;
+}
+
 .allProducts__header {
   display: flex;
   justify-content: center;
