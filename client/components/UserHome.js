@@ -13,12 +13,15 @@ export const UserHome = (props) => {
 
   return (
     <body className="userHome">
-      <div>
+      <div className="userFirstDiv">
         <h3 className="userHomeText">
           Welcome, {firstName}, our beautiful user. Please click on the Cards
           For Sale button to view your new friends.{' '}
         </h3>
-        <img src="https://i.etsystatic.com/12240578/r/il/48bbd5/1216795870/il_570xN.1216795870_92ok.jpg" />
+        <img
+          className="userImage"
+          src="https://i.etsystatic.com/12240578/r/il/48bbd5/1216795870/il_570xN.1216795870_92ok.jpg"
+        />
       </div>
     </body>
   );
