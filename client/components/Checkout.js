@@ -6,7 +6,6 @@ import '../css-components/Checkout.css';
 export class Checkout extends React.Component {
   componentDidMount() {
     this.props.fetchOrder();
-    this.props.checkoutOrder();
   }
   render() {
     console.log('this.props', this.props);
@@ -84,7 +83,6 @@ export class Checkout extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-
   return {
     order: state.order,
   };
@@ -94,7 +92,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     fetchOrder: () => dispatch(fetchOrder()),
     checkoutOrder: () => dispatch(checkoutOrder()),
-
   };
 };
 
