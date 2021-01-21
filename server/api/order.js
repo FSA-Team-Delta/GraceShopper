@@ -4,22 +4,6 @@ const Order = require('../db/models/order');
 const {Product} = require('../db/models');
 const {restart} = require('nodemon');
 
-//POST request
-//find all orders
-//find if they have any incomplete
-//if we have user id
-//find all orders where userid is one and there is false
-//if there's none then we use findOrCreate sequelize method
-//now we have access to an order id
-//we can use it to put details into our through table
-//can do it all in one request
-//first find order
-//using that order, add details
-//by directly using sequelize methods as a regular table
-//req.body is an object that takes as much info as we need
-//let quantity = req.body.quantity
-//have request body, find an order, now we have all we need to put details in the through
-
 router.get('/', async (req, res, next) => {
   try {
     const order = await Order.findOne({

@@ -29,7 +29,6 @@ export class Order extends React.Component {
         <h1 className="Cart__header">Cart</h1>
         <div>
           {this.props.order.map((elem) => {
-            console.log(';ldkfja;dlfj', elem);
             totalPrice += +elem.price * +elem.Product_Order.quantity;
             return (
               <div className="Cart__description" key={elem.id}>

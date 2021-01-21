@@ -59,6 +59,4 @@ const Product = db.define('product', {
   },
 });
 
-//hp, resistance, weakness, retreate cost, attacks, image, name
-
 module.exports = Product;

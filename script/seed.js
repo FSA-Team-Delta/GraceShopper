@@ -3,7 +3,6 @@
 const axios = require('axios');
 const db = require('../server/db');
 const {User, Checkout, Product, Cart, Order} = require('../server/db/models');
-// const pokemon = require('../pokemons')
 
 async function seed() {
   await db.sync({force: true});
@@ -16,7 +15,6 @@ async function seed() {
       return Product.create(pokemon);
     })
   );
-  console.log(cards);
   console.log('db synced!');
 
   console.log(`seeded successfully`);
