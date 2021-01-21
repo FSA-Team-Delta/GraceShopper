@@ -16,6 +16,5 @@
   display: flex;
   margin-left: 10px;
   flex-direction: column;
-  background-color: green;
   flex-shrink: 1;
 }
