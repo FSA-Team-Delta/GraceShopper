@@ -29,7 +29,6 @@ export const addProduct = (product) => {
   return async (dispatch) => {
     try {
       const {data} = await axios.post(`/api/order`, product);
-
       dispatch(_addProduct(data));
     } catch (err) {
       console.log(err);
@@ -55,8 +54,8 @@ const _changeQuantity = (product, quantity) => ({
 export const changeProductQuantity = (product, quantity) => {
   return async (dispatch) => {
     try {
-      await axios.put(`/api/order/changeQuantity/${product.id}`);
-      dispatch(_changeQuantity(product, quantity));
+      await axios.put(`/api/order/${product.Product_Order.id}`, quantity);
+      dispatch(fetchOrder());
     } catch (err) {
       console.log(err);
     }
@@ -67,7 +66,7 @@ export const removeProduct = (product) => {
   return async (dispatch) => {
     try {
       await axios.delete(`/api/order/${product.id}`);
-      dispatch(deleteProduct(product));
+      dispatch(fetchOrder());
     } catch (err) {
       console.log(err);
     }
@@ -102,8 +101,22 @@ export default function orderReducer(state = initialState, action) {
       return state.map((order) =>
         order.id == action.order.id ? action.order : order
       );
-    case CHANGE_QUANTITY:
-      return [...state, action.product];
+    case CHANGE_QUANTITY: {
+      const newState = state.map((item) => {
+        if (item.id === action.product.id) {
+          return {
+            ...action.product,
+            Product_Order: {
+              ...action.product.Product_Order,
+              quantity: action.quantity,
+            },
+          };
+        } else {
+          return item;
+        }
+      });
+      return newState;
+    }
     default:
       return state;
   }

@@ -2,6 +2,7 @@ const router = require('express').Router();
 const {Product_Order} = require('../db/models');
 const Order = require('../db/models/order');
 const {Product} = require('../db/models');
+const {restart} = require('nodemon');
 
 //POST request
 //find all orders
@@ -18,6 +19,20 @@ const {Product} = require('../db/models');
 //req.body is an object that takes as much info as we need
 //let quantity = req.body.quantity
 //have request body, find an order, now we have all we need to put details in the through
+
+router.get('/', async (req, res, next) => {
+  try {
+    const order = await Order.findOne({
+      where: {
+        completed: false,
+        userId: req.session.passport.user,
+      },
+    });
+    res.send(await order.getProducts());
+  } catch (error) {
+    next(error);
+  }
+});
 
 router.put('/', async (req, res, next) => {
   try {
@@ -41,10 +56,9 @@ router.put('/:id', async (req, res, next) => {
   try {
     const quantity = req.body.quantity || 1;
 
-    const {Product_Order} = await Order.findOne({
-      productId: req.params.productId,
-      completed: false,
-    });
+    const cartItem = await Product_Order.findByPk(req.params.id);
+
+    res.send(await cartItem.update(req.body));
   } catch (err) {
     next(err);
   }
@@ -89,12 +103,18 @@ router.post('/', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    const product = await Product.findByPk(req.params.id);
-    if (!product) res.sendStatus(404);
-    else {
-      await product.destroy();
-      res.sendStatus(200);
-    }
+    const userId = req.session.passport.user;
+    const productId = req.params.id;
+
+    const order = await Order.findOne({
+      where: {
+        userId,
+        completed: false,
+      },
+    });
+
+    await order.removeProduct(productId);
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }
