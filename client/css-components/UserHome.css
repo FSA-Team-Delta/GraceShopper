@@ -1,0 +1,13 @@
+.userHome {
+  background-color: rgb(110, 185, 110);
+  margin: 0;
+  padding: 0;
+}
+
+.userHomeText {
+  font-size: 30px;
+  -webkit-font-smoothing: none;
+  font-family: 'pokemon-font', monospace;
+  color: rgb(255, 255, 0);
+  text-align: center;
+}

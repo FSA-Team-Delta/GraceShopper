@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import '../css-components/UserHome.css';
 
 /**
  * COMPONENT
@@ -11,12 +12,15 @@ export const UserHome = (props) => {
   console.log(props);
 
   return (
-    <div>
-      <h3>
-        Welcome, {firstName}, our beautiful user. Please click on the Cards For
-        Sale button to view your new friends.{' '}
-      </h3>
-    </div>
+    <body className="userHome">
+      <div>
+        <h3 className="userHomeText">
+          Welcome, {firstName}, our beautiful user. Please click on the Cards
+          For Sale button to view your new friends.{' '}
+        </h3>
+        <img src="https://i.etsystatic.com/12240578/r/il/48bbd5/1216795870/il_570xN.1216795870_92ok.jpg" />
+      </div>
+    </body>
   );
 };
 

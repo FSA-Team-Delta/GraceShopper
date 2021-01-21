@@ -30,8 +30,21 @@ router.put('/', async (req, res, next) => {
     if (order) {
       order.completed = true;
       await order.save();
+      res.send(order);
     }
-    res.send(order);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    const quantity = req.body.quantity || 1;
+
+    const {Product_Order} = await Order.findOne({
+      productId: req.params.productId,
+      completed: false,
+    });
   } catch (err) {
     next(err);
   }

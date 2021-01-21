@@ -9,6 +9,8 @@ class SinglePokemon extends React.Component {
   constructor() {
     super();
     this.onClick = this.onClick.bind(this);
+    this.changeHandler = this.changeHandler.bind(this);
+    this.state = {quantity: 1};
   }
   componentDidMount() {
     this.props.singlePokemon(this.props.match.params.id);
@@ -17,6 +19,13 @@ class SinglePokemon extends React.Component {
     console.log('clicked', product);
     this.props.addProduct(product);
   }
+
+  changeHandler(evt) {
+    this.setState({
+      quantity: +evt.target.value,
+    });
+  }
+
   render() {
     if (!this.props.pokemon.id) {
       return (
@@ -50,7 +59,7 @@ class SinglePokemon extends React.Component {
               >
                 Add to Cart
               </Button>
-              <input type="number" />
+              <input type="number" onChange={this.changeHandler} />
             </div>
           </div>
         </div>
