@@ -8,7 +8,6 @@ export class Checkout extends React.Component {
     this.props.fetchOrder();
   }
   render() {
-    console.log('this.props', this.props);
     return (
       <div className="checkoutPage">
         <div>
