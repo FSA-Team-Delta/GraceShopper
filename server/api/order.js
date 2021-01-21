@@ -74,17 +74,17 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-// router.delete('/:id', async (req, res, next) => {
-//   try {
-//     const product = await Product.findByPk(req.params.id);
-//     if (!product) res.sendStatus(404);
-//     else {
-//       await product.destroy();
-//       res.sendStatus(200);
-//     }
-//   } catch (err) {
-//     next(err);
-//   }
-// });
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const product = await Product.findByPk(req.params.id);
+    if (!product) res.sendStatus(404);
+    else {
+      await product.destroy();
+      res.sendStatus(200);
+    }
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;
